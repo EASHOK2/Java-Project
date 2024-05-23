@@ -1,0 +1,71 @@
+public abstract class Vehicle {
+    private String registrationNumber;
+    private String model;
+    private double rentalRate;
+
+    public Vehicle(String registrationNumber, String model, double rentalRate) {
+        this.registrationNumber = registrationNumber;
+        this.model = model;
+        this.rentalRate = rentalRate;
+    }
+
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public double getRentalRate() {
+        return rentalRate;
+    }
+
+    public abstract void displayDetails();
+}
+public class Car extends Vehicle {
+    private int seatingCapacity;
+
+    public Car(String registrationNumber, String model, double rentalRate, int seatingCapacity) {
+        super(registrationNumber, model, rentalRate);
+        this.seatingCapacity = seatingCapacity;
+    }
+
+    @Override
+    public void displayDetails() {
+        System.out.println("Car{" +
+                "registrationNumber='" + getRegistrationNumber() + '\'' +
+                ", model='" + getModel() + '\'' +
+                ", rentalRate=" + getRentalRate() +
+                ", seatingCapacity=" + seatingCapacity +
+                '}');
+    }
+}
+public class Motorcycle extends Vehicle {
+    private int engineCapacity;
+
+    public Motorcycle(String registrationNumber, String model, double rentalRate, int engineCapacity) {
+        super(registrationNumber, model, rentalRate);
+        this.engineCapacity = engineCapacity;
+    }
+
+    @Override
+    public void displayDetails() {
+        System.out.println("Motorcycle{" +
+                "registrationNumber='" + getRegistrationNumber() + '\'' +
+                ", model='" + getModel() + '\'' +
+                ", rentalRate=" + getRentalRate() +
+                ", engineCapacity=" + engineCapacity +
+                '}');
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car("CAR123", "Toyota Camry", 50.0, 5);
+        Motorcycle motorcycle = new Motorcycle("MOTO123", "Yamaha R15", 30.0, 150);
+
+        // Display vehicle details
+        car.displayDetails();
+        motorcycle.displayDetails();
+    }
+}
